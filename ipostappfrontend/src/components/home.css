@@ -1,0 +1,12 @@
+
+.posts {
+    width: 50%;
+    margin: auto;
+  }
+  
+.posts cite{
+    display: flex;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
