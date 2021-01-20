@@ -25,3 +25,5 @@
 ### Testing
 - http://localhost:3000/ -> React
 - http://localhost:8000/admin -> Django Admin
+
+### PS-Update the values of EMAIL_HOST_USER and EMAIL_HOST_PASSWORD in settings.py to test welcome email 

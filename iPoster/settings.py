@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,6 +135,7 @@ REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.All
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+#JWT dictionary
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -148,3 +150,12 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
+
+#email details
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'XXXX@gmail.com'
+EMAIL_HOST_PASSWORD = 'XXXX'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+

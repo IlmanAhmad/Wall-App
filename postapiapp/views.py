@@ -6,6 +6,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from postapiapp.models import Post, USERPROFILE
 from .serializer import PostSerializer, CustomUserSerializer
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -50,10 +52,19 @@ class CustomUserSignUp(APIView):
         """
         function to handle new signup request
         """
+        json_data = request.data
+        email = json_data.get("email", "0")
 
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             USERPROFILE = serializer.save()
+            send_mail(
+                'Welcome email',
+                'Welcome to iWall Posting App.',
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=False,
+            )
             if USERPROFILE:
                 return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
