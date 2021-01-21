@@ -11,9 +11,16 @@ class Logoutbtn extends React.Component {
         this.props.history.push("/");
     }
 
+    state = {
+        user: localStorage.user
+    }
+
     render() {
         return (
+            <div>
+            <button className="btn btn-outline-success mx-2">{this.state.user}</button>
             <button className="btn btn-outline-success" onClick={this.logout}>Logout</button>
+            </div>
         )
     }
 

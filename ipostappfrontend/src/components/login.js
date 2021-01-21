@@ -30,6 +30,7 @@ class Loginform extends Component {
                 
                 localStorage.setItem('access_token', res.data.access);
                 localStorage.setItem('refresh_token', res.data.refresh);
+                localStorage.setItem('user', res.data.user);
                 localStorage.setItem('isLoggedIn', true);
                 axios.defaults.headers['Authorization'] =
                     'JWT ' + localStorage.getItem('access_token');

@@ -1,6 +1,20 @@
 from rest_framework import serializers
 from postapiapp.models import Post, USERPROFILE
-from django.contrib.auth.models import User
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """Serializer for adding username and id in response"""
+
+    def validate(self, attrs):
+        
+        data = super(MyTokenObtainPairSerializer, self).validate(attrs)
+        data.update({'user': self.user.name})
+        data.update({'id': self.user.id})
+        
+        return data
+
 
 
 class PostSerializer(serializers.ModelSerializer):

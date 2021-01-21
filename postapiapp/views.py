@@ -5,12 +5,20 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from postapiapp.models import Post, USERPROFILE
-from .serializer import PostSerializer, CustomUserSerializer
+from .serializer import PostSerializer, CustomUserSerializer, MyTokenObtainPairSerializer
 from django.core.mail import send_mail
 from django.conf import settings
-
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Create your views here.
+
+class Customtokengen(TokenObtainPairView):
+    """
+    API View for custom TokenObtainPairView 
+    """
+    serializer_class = MyTokenObtainPairSerializer
+
+
 class ReadOnlyPostView(APIView):
     """
     API View class for Read only - PostSerializer

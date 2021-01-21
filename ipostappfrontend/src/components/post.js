@@ -3,7 +3,7 @@ import axios from "axios";
 class Post extends Component {
     state = {
         details: [],
-        user: "",
+        user: localStorage.user,
         post: "",
         time_stamp: "",
     };
@@ -44,11 +44,10 @@ class Post extends Component {
                             </span>
                         </div>
                         <input type="text" className="form-control"
-                            placeholder="Enter your Name"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                             value={this.state.user} name="user"
-                            onChange={this.handleInput} />
+                            disabled />
                     </div>
 
                     <div className="input-group mb-3">

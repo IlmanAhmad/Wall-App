@@ -24,7 +24,7 @@ urlpatterns = [
     path('postread/', ReadOnlyPostView.as_view(), name="readpost"),
     path('posts/', PostView.as_view(), name="post"),
     path('api/register/', CustomUserSignUp.as_view(), name="signup"),
-    path('token/obtain/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
+    path('token/obtain/', Customtokengen.as_view(), name='token_create'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     
 ]
